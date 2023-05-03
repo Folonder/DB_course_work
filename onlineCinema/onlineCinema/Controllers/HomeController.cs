@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using onlineCinema.Models;
 using onlineCinema.Repositories;
 using onlineCinema.Repositories.Interfaces;
+using Org.BouncyCastle.Asn1.Crmf;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -26,7 +27,8 @@ namespace onlineCinema.Controllers
 
         public IActionResult Index()
         {
-            var film = new FilmModel(
+            _filmRepository.GetMpaaRatingValues();
+            /*var film = new FilmModel(
                 "Список Шиндлера",
                 "Schindlers List",
                 "Этот список - жизнь",
@@ -39,7 +41,7 @@ namespace onlineCinema.Controllers
                 DateTime.ParseExact("03:15:00", "HH:mm:ss", null)
                 );
             film.Id = 1;
-            _filmRepository.UpdateFilm(film);
+            _filmRepository.UpdateFilm(film);*/
 
             /*var film = _filmRepository.GetFilmById(1);
             Console.WriteLine(film.Id);*/
@@ -64,6 +66,23 @@ namespace onlineCinema.Controllers
                             Console.WriteLine(film.Id);
                         }*/
             return View();
+        }
+
+
+        public IActionResult Create()
+        {
+            ViewBag.MpaaRating = _filmRepository.GetMpaaRatingValues();
+            
+            return View("Film");
+        }
+
+
+        [HttpPost]
+        public IActionResult Create(FilmModel film)
+        {
+            Console.WriteLine(film.ReleaseDate.ToString());
+            Console.WriteLine(film.Title);
+            return RedirectToAction("Index", "Home");
         }
 
         public IActionResult Privacy()

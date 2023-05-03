@@ -1,17 +1,9 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
 
-/*public enum MpaaRatingEnum
-{
-    G,
-    PG,
-    PG13,
-    R,
-    NC17
-
-}*/
 
 
 namespace onlineCinema.Models
@@ -19,24 +11,35 @@ namespace onlineCinema.Models
     public class FilmModel
     {
         public int Id { get; set; }
+
+        [Required(ErrorMessage = "The Title field is required.")]
         public string Title { get; set; }
 
+        [Required(ErrorMessage = "The Name field is required.")]
         public string OriginalTitle { get; set; }
 
+        [Required(ErrorMessage = "The Name field is required.")]
         public string Tagline { get; set; }
 
+        [Required(ErrorMessage = "The Name field is required.")]
         public DateTime ReleaseDate { get; set; }
 
+        [Required(ErrorMessage = "The Name field is required.")]
         public uint Rating { get; set; }
 
+        [Required(ErrorMessage = "The Name field is required.")]
         public uint Budget { get; set; }
 
+        [Required(ErrorMessage = "The Name field is required.")]
         public string MpaaRating{ get; set; }
 
+        [Required(ErrorMessage = "The Name field is required.")]
         public string Description { get; set; }
 
+        [Required(ErrorMessage = "The Name field is required.")]
         public string Language { get; set; }
 
+        [Required(ErrorMessage = "The Name field is required.")]
         public DateTime Duration { get; set; }
 
         public FilmModel(MySqlDataReader reader)
@@ -67,6 +70,11 @@ namespace onlineCinema.Models
             Description = description;
             Language = language;
             Duration = duration;
+        }
+
+        public FilmModel()
+        {
+
         }
     }
 }

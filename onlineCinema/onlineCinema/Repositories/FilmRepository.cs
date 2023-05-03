@@ -1,9 +1,11 @@
 ﻿using Microsoft.Extensions.Options;
 using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI.Common;
 using onlineCinema.Models;
 using onlineCinema.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace onlineCinema.Repositories
 {
@@ -68,6 +70,24 @@ namespace onlineCinema.Repositories
             Console.WriteLine(query);
             new MySqlCommand(query, _connection).ExecuteNonQuery();
             _connection.Close();
+        }
+
+        public List<string> GetMpaaRatingValues()
+        {
+            _connection.Open();
+            MySqlDataReader reader = new MySqlCommand($"SELECT SUBSTRING(COLUMN_TYPE, 5) FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'films' AND COLUMN_NAME = 'MPAA_rating';", _connection).ExecuteReader();
+            if (reader.Read())
+            {
+                List<string> values = new List<string>();
+
+                foreach (Match match in new Regex("'(.*?)'").Matches(reader[0].ToString()))
+                {
+                    values.Add(match.Groups[1].Value);
+                }
+                _connection.Close();
+                return values;
+            }
+            throw new Exception();
         }
     }
 }

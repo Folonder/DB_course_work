@@ -10,5 +10,7 @@ namespace onlineCinema.Repositories.Interfaces
         void DeleteFilm(int id);
         FilmModel GetFilmById(int id);
         IEnumerable<FilmModel> GetAllFilms();
+
+        List<string> GetMpaaRatingValues();
     }
 }
