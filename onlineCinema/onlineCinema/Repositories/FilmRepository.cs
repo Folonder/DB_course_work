@@ -16,21 +16,27 @@ namespace onlineCinema.Repositories
             _connection = new MySqlConnection(options.Value.ConnectionString);
         }
 
-        public void AddFilm(FilmModel movie)
+        public void AddFilm(FilmModel film)
         {
-            throw new System.NotImplementedException();
+            _connection.Open();
+            int langId = (int) new MySqlCommand($"SELECT language_id FROM languages WHERE name LIKE '{film.Language}'", _connection).ExecuteScalar();
+            string query = $"INSERT INTO films ( title, original_title, tagline, release_date, rating, budget, MPAA_rating, description, language_id, duration) VALUES ('{film.Title}', '{film.OriginalTitle}', '{film.Tagline}', '{film.ReleaseDate.ToString("yyyy-MM-dd")}', {film.Rating}, {film.Budget}, '{film.MpaaRating}', '{film.Description}', {langId}, '{film.Duration.ToString("HH:mm:ss")}')";
+            Console.WriteLine(query);
+            new MySqlCommand(query, _connection).ExecuteNonQuery();
+            _connection.Close();
         }
 
         public void DeleteFilm(int id)
         {
-            throw new System.NotImplementedException();
+            _connection.Open();
+            new MySqlCommand($"DELETE FROM films WHERE film_id = {id}", _connection).ExecuteNonQuery();
+            _connection.Close();
         }
 
         public IEnumerable<FilmModel> GetAllFilms()
         {
             var films = new List<FilmModel>();
             _connection.Open();
-            //var command = new MySqlCommand("SELECT * FROM movies.films_view", _connection);
             MySqlDataReader reader = new MySqlCommand("SELECT * FROM movies.films_view", _connection).ExecuteReader();
             while (reader.Read())
             {
@@ -42,12 +48,26 @@ namespace onlineCinema.Repositories
 
         public FilmModel GetFilmById(int id)
         {
-            throw new System.NotImplementedException();
+            _connection.Open();
+            MySqlDataReader reader = new MySqlCommand($"SELECT * FROM movies.films_view WHERE id = {id}", _connection).ExecuteReader();
+            if (reader.Read())
+            {
+                var film = new FilmModel(reader);
+                _connection.Close();
+                return film;
+            }
+            throw new Exception();
+            
         }
 
-        public void UpdateFilm(FilmModel movie)
+        public void UpdateFilm(FilmModel film)
         {
-            throw new System.NotImplementedException();
+            _connection.Open();
+            int langId = (int)new MySqlCommand($"SELECT language_id FROM languages WHERE name LIKE '{film.Language}'", _connection).ExecuteScalar();
+            string query = $"UPDATE films SET title = '{film.Title}', original_title = '{film.OriginalTitle}', tagline = '{film.Tagline}', release_date = '{film.ReleaseDate.ToString("yyyy-MM-dd")}', rating = {film.Rating}, budget = {film.Budget}, MPAA_rating = '{film.MpaaRating}', description = '{film.Description}', language_id = {langId}, duration = '{film.Duration.ToString("HH:mm:ss")}' WHERE film_id = {film.Id}";
+            Console.WriteLine(query);
+            new MySqlCommand(query, _connection).ExecuteNonQuery();
+            _connection.Close();
         }
     }
 }

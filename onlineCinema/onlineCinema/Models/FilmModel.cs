@@ -46,13 +46,27 @@ namespace onlineCinema.Models
             Title = reader.GetString("title");
             OriginalTitle = reader.GetString("original_title");
             Tagline = reader.GetString("tagline");
-            ReleaseDate = reader.GetMySqlDateTime("release_date").GetDateTime();
+            ReleaseDate = DateTime.Parse(reader.GetString("release_date"));
             Rating = uint.Parse(reader.GetString("rating"));
             Budget = uint.Parse(reader.GetString("budget"));
             MpaaRating = reader.GetString("MPAA_rating");
             Description = reader.GetString("description");
             Language = reader.GetString("language");
             Duration = DateTime.ParseExact(reader.GetString("duration"), "HH:mm:ss", null);
+        }
+
+        public FilmModel(string title, string originalTitle, string tagline, DateTime releaseDate, uint rating, uint budget, string mpaaRating, string description, string language, DateTime duration)
+        {
+            Title = title;
+            OriginalTitle = originalTitle;
+            Tagline = tagline;
+            ReleaseDate = releaseDate;
+            Rating = rating;
+            Budget = budget;
+            MpaaRating = mpaaRating;
+            Description = description;
+            Language = language;
+            Duration = duration;
         }
     }
 }
