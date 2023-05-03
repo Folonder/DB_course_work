@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Microsoft.Extensions.Options;
+using MySql.Data.MySqlClient;
 using onlineCinema.Models;
 using onlineCinema.Repositories.Interfaces;
 using System;
@@ -8,11 +9,11 @@ namespace onlineCinema.Repositories
 {
     public class FilmRepository : IFilmRepository
     {
-        private readonly MySqlConnection Connection;
+        private readonly MySqlConnection _connection;
 
-        public FilmRepository(MySqlConnection connection)
+        public FilmRepository(IOptions<RepositoryOptions> options)
         {
-            Connection = connection;
+            _connection = new MySqlConnection(options.Value.ConnectionString);
         }
 
         public void AddFilm(FilmModel movie)
@@ -28,13 +29,14 @@ namespace onlineCinema.Repositories
         public IEnumerable<FilmModel> GetAllFilms()
         {
             var films = new List<FilmModel>();
-            Connection.Open();
-            var command = new MySqlCommand("Select * from films LIMIT 10");
-            var reader = command.ExecuteReader();
+            _connection.Open();
+            //var command = new MySqlCommand("SELECT * FROM movies.films_view", _connection);
+            MySqlDataReader reader = new MySqlCommand("SELECT * FROM movies.films_view", _connection).ExecuteReader();
             while (reader.Read())
             {
-                Console.WriteLine(reader["id"]);
+                films.Add(new FilmModel(reader));
             }
+            _connection.Close();
             return films;
         }
 

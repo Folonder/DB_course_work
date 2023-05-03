@@ -3,7 +3,11 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
+using MySql.Data.MySqlClient;
+using onlineCinema.Repositories;
+using onlineCinema.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +28,8 @@ namespace onlineCinema
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddScoped<IFilmRepository, FilmRepository>();
+            services.AddOptions<RepositoryOptions>().Bind(Configuration.GetSection(RepositoryOptions.Key)).ValidateDataAnnotations();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

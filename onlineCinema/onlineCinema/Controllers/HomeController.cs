@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using onlineCinema.Models;
+using onlineCinema.Repositories;
+using onlineCinema.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -13,14 +15,21 @@ namespace onlineCinema.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly IFilmRepository _filmRepository;
+
+        public HomeController(ILogger<HomeController> logger, IFilmRepository filmRepository)
         {
+            _filmRepository = filmRepository;
             _logger = logger;
         }
 
         public IActionResult Index()
         {
-
+            var films = _filmRepository.GetAllFilms();
+            foreach (var film in films)
+            {
+                Console.WriteLine(film.Id);
+            }
             return View();
         }
 
