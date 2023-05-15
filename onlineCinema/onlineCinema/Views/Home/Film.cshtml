@@ -1,4 +1,4 @@
-﻿@model onlineCinema.Models.FilmModel
+﻿@model FilmModel
 
 <h1>Create a new item</h1>
 
@@ -48,6 +48,15 @@
     <div class="form-group">
         <label asp-for="Duration" class="control-label">Duration</label>
         <input asp-for="Duration" type="time" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Actors" class="control-label"></label>
+        <select asp-for="Actors" asp-items="ViewBag.Actors" class="form-control">
+            @foreach (var actor in ViewBag.Actors)
+            {
+                <option value="@actor">@actor</option>
+            }
+        </select>
     </div>
     <button type="submit" class="btn btn-primary">Create</button>
 </form>

@@ -50,3 +50,15 @@ C:\учеба\4 семестр\бд\DB_course_work\onlineCinema\onlineCinema\bin
 C:\учеба\4 семестр\бд\DB_course_work\onlineCinema\onlineCinema\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\krbcc64.dll
 C:\учеба\4 семестр\бд\DB_course_work\onlineCinema\onlineCinema\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\учеба\4 семестр\бд\DB_course_work\onlineCinema\onlineCinema\obj\Debug\netcoreapp3.1\Razor\Views\Home\Film.cshtml.g.cs
+C:\учеба\4 семестр\бд\DB_course_work\onlineCinema\onlineCinema\obj\Debug\netcoreapp3.1\Razor\Views\Home\FilmEdit.cshtml.g.cs
+C:\учеба\4 семестр\бд\DB_course_work\onlineCinema\onlineCinema\obj\Debug\netcoreapp3.1\Razor\Views\Film\AddFilm.cshtml.g.cs
+C:\учеба\4 семестр\бд\DB_course_work\onlineCinema\onlineCinema\obj\Debug\netcoreapp3.1\Razor\Views\Film\EditFilm.cshtml.g.cs
+C:\учеба\4 семестр\бд\DB_course_work\onlineCinema\onlineCinema\obj\Debug\netcoreapp3.1\Razor\Views\Film\Films.cshtml.g.cs
+C:\учеба\4 семестр\бд\DB_course_work\onlineCinema\onlineCinema\obj\Debug\netcoreapp3.1\Razor\Views\Actor\Actors.cshtml.g.cs
+C:\учеба\4 семестр\бд\DB_course_work\onlineCinema\onlineCinema\obj\Debug\netcoreapp3.1\Razor\Views\Actor\AddActor.cshtml.g.cs
+C:\учеба\4 семестр\бд\DB_course_work\onlineCinema\onlineCinema\obj\Debug\netcoreapp3.1\Razor\Views\Actor\EditActor.cshtml.g.cs
+C:\учеба\4 семестр\бд\DB_course_work\onlineCinema\onlineCinema\obj\Debug\netcoreapp3.1\Razor\Views\Language\AddLanguage.cshtml.g.cs
+C:\учеба\4 семестр\бд\DB_course_work\onlineCinema\onlineCinema\obj\Debug\netcoreapp3.1\Razor\Views\Language\EditLanguage.cshtml.g.cs
+C:\учеба\4 семестр\бд\DB_course_work\onlineCinema\onlineCinema\obj\Debug\netcoreapp3.1\Razor\Views\Language\Languages.cshtml.g.cs
+C:\учеба\4 семестр\бд\DB_course_work\onlineCinema\onlineCinema\obj\Debug\netcoreapp3.1\Razor\Views\Film\FilmDetails.cshtml.g.cs
+C:\учеба\4 семестр\бд\DB_course_work\onlineCinema\onlineCinema\obj\Debug\netcoreapp3.1\Razor\Views\Actor\ActorDetails.cshtml.g.cs

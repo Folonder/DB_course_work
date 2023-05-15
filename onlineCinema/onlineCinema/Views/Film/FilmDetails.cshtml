@@ -1,0 +1,115 @@
+﻿@model FilmModel
+
+<h1>Film Details</h1>
+
+<div>
+    <h4>Title</h4>
+    <p>@Model.Title</p>
+</div>
+
+<div>
+    <h4>Original Title</h4>
+    <p>@Model.OriginalTitle</p>
+</div>
+
+<div>
+    <h4>Tagline</h4>
+    <p>@Model.Tagline</p>
+</div>
+
+<div>
+    <h4>Release Date</h4>
+    <p>@Model.ReleaseDate.ToShortDateString()</p>
+</div>
+
+<div>
+    <h4>Rating</h4>
+    <p>@Model.Rating</p>
+</div>
+
+<div>
+    <h4>Budget</h4>
+    <p>@Model.Budget</p>
+</div>
+
+<div>
+    <h4>MPAA Rating</h4>
+    <p>@Model.MpaaRating</p>
+</div>
+
+<div>
+    <h4>Description</h4>
+    <p>@Model.Description</p>
+</div>
+
+<div>
+    <h4>Language</h4>
+    <p>@Model.Language.Name</p>
+</div>
+
+<div>
+    <h4>Duration</h4>
+    <p>@Model.Duration</p>
+</div>
+
+<div>
+    <h4>Actors</h4>
+    <ul>
+        @foreach (var actor in Model.Actors)
+        {
+            <li>@actor.Name</li>
+        }
+    </ul>
+</div>
+
+<div>
+    <h4>Genres</h4>
+    <ul>
+        @foreach (var genre in Model.Genres)
+        {
+            <li>@genre</li>
+        }
+    </ul>
+</div>
+
+<div>
+    <h4>Countries</h4>
+    <ul>
+        @foreach (var country in Model.Countries)
+        {
+            <li>@country</li>
+        }
+    </ul>
+</div>
+
+<div>
+    <h4>Directors</h4>
+    <ul>
+        @foreach (var director in Model.Directors)
+        {
+            <li>@director</li>
+        }
+    </ul>
+</div>
+
+<div>
+    <h4>Companies</h4>
+    <ul>
+        @foreach (var company in Model.Companies)
+        {
+            <li>@company</li>
+        }
+    </ul>
+</div>
+
+<div>
+    <h4>Scriptwriters</h4>
+    <ul>
+        @foreach (var scriptwriter in Model.Scriptwriters)
+        {
+            <li>@scriptwriter</li>
+        }
+    </ul>
+</div>
+
+<a href="/Film/Films" class="btn btn-secondary">Back</a>

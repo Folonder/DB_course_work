@@ -19,15 +19,18 @@ namespace onlineCinema.Controllers
 
         private readonly IFilmRepository _filmRepository;
 
-        public HomeController(ILogger<HomeController> logger, IFilmRepository filmRepository)
+        private readonly IActorRepository _actorRepository;
+
+        public HomeController(ILogger<HomeController> logger, IFilmRepository filmRepository, IActorRepository actorRepository)
         {
             _filmRepository = filmRepository;
             _logger = logger;
+            _actorRepository = actorRepository;
         }
 
         public IActionResult Index()
         {
-            _filmRepository.GetMpaaRatingValues();
+            /*_filmRepository.GetMpaaRatingValues();*/
             /*var film = new FilmModel(
                 "Список Шиндлера",
                 "Schindlers List",
@@ -65,6 +68,10 @@ namespace onlineCinema.Controllers
                         {
                             Console.WriteLine(film.Id);
                         }*/
+            foreach (var actor in _actorRepository.GetAllActors())
+            {
+                Console.WriteLine(actor.Name);
+            }
             return View();
         }
 
@@ -84,6 +91,36 @@ namespace onlineCinema.Controllers
             Console.WriteLine(film.Title);
             return RedirectToAction("Index", "Home");
         }
+
+
+        public IActionResult Edit()
+        {
+            ViewBag.MpaaRating = _filmRepository.GetMpaaRatingValues();
+            ViewBag.Actors = _filmRepository.GetActors();
+            FilmModel film = _filmRepository.GetFilmById(1);
+            return View("FilmEdit", film);
+        }
+
+
+        [HttpPost]
+        public IActionResult Edit(FilmModel film)
+        {
+            foreach (var actor in film.Actors)
+            {
+                Console.WriteLine(actor);
+            }
+            
+            Console.WriteLine(film.Title);
+            return RedirectToAction("Index", "Home");
+        }
+
+
+        public IActionResult Films()
+        {
+            var films = _filmRepository.GetAllFilms();
+            return View(films);
+        }
+
 
         public IActionResult Privacy()
         {

@@ -28,6 +28,8 @@ namespace onlineCinema
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddScoped<IActorRepository, ActorRepository>();
+            services.AddScoped<ILanguageRepository, LanguageRepository>();
             services.AddScoped<IFilmRepository, FilmRepository>();
             services.AddOptions<RepositoryOptions>().Bind(Configuration.GetSection(RepositoryOptions.Key)).ValidateDataAnnotations();
         }

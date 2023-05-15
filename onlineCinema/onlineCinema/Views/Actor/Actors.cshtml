@@ -1,0 +1,30 @@
+﻿@model List<ActorModel>
+
+<h2>Actors</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<p>
+    <a asp-action="PopularActor">Самый популярный актер</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var actor in Model)
+        {
+            <tr>
+                <td>@actor.Name</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@actor.Id">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@actor.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
