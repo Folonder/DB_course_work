@@ -1,15 +1,15 @@
 ﻿@model List<LanguageModel>
 
-<h2>Languages</h2>
+<h2>Языки</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Добавить новый язык</a>
 </p>
 
 <table class="table">
     <thead>
         <tr>
-            <th>Name</th>
+            <th>Название</th>
             <th></th>
         </tr>
     </thead>
@@ -19,8 +19,8 @@
             <tr>
                 <td>@language.Name</td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@language.Id">Edit</a> |
-                    <a asp-action="Delete" asp-route-id="@language.Id">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@language.Id">Редактировать</a> |
+                    <a asp-action="Delete" asp-route-id="@language.Id">Удалить</a>
                 </td>
             </tr>
         }

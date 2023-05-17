@@ -1,9 +1,9 @@
 ﻿@model List<FilmModel>
 
-<h2>Films</h2>
+<h2>Фильмы</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Добавить новый фильм</a>
 </p>
 <p>
     <a asp-action="RatedFilm">Самый рейтинговый фильм</a>
@@ -11,11 +11,11 @@
 <table class="table">
     <thead>
         <tr>
-            <th>Title</th>
-            <th>Release Date</th>
-            <th>Language</th>
-            <th>Duration</th>
-            <th>Rating</th>
+            <th>Название</th>
+            <th>Дата выхода</th>
+            <th>Язык</th>
+            <th>Продолжительность</th>
+            <th>Рейтинг</th>
             <th></th>
         </tr>
     </thead>
@@ -29,9 +29,9 @@
                 <td>@film.Duration.TimeOfDay</td>
                 <td>@film.Rating</td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@film.Id">Edit</a> |
-                    <a asp-action="Delete" asp-route-id="@film.Id">Delete</a> |
-                    <a asp-action="Details" asp-route-id="@film.Id">Details</a>
+                    <a asp-action="Edit" asp-route-id="@film.Id">Редактировать</a> |
+                    <a asp-action="Delete" asp-route-id="@film.Id">Удалить</a> |
+                    <a asp-action="Details" asp-route-id="@film.Id">Подробности</a>
                 </td>
             </tr>
         }

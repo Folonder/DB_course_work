@@ -1,59 +1,59 @@
 ﻿@model FilmModel
 
-<h1>Film Details</h1>
+<h1>Подробности фильма</h1>
 
 <div>
-    <h4>Title</h4>
+    <h4>Название:</h4>
     <p>@Model.Title</p>
 </div>
 
 <div>
-    <h4>Original Title</h4>
+    <h4>Оригинальное название:</h4>
     <p>@Model.OriginalTitle</p>
 </div>
 
 <div>
-    <h4>Tagline</h4>
+    <h4>Слоган:</h4>
     <p>@Model.Tagline</p>
 </div>
 
 <div>
-    <h4>Release Date</h4>
+    <h4>Дата выхода:</h4>
     <p>@Model.ReleaseDate.ToShortDateString()</p>
 </div>
 
 <div>
-    <h4>Rating</h4>
+    <h4>Рейтинг:</h4>
     <p>@Model.Rating</p>
 </div>
 
 <div>
-    <h4>Budget</h4>
+    <h4>Бюджет:</h4>
     <p>@Model.Budget</p>
 </div>
 
 <div>
-    <h4>MPAA Rating</h4>
+    <h4>Рейтинг MPAA:</h4>
     <p>@Model.MpaaRating</p>
 </div>
 
 <div>
-    <h4>Description</h4>
+    <h4>Описание:</h4>
     <p>@Model.Description</p>
 </div>
 
 <div>
-    <h4>Language</h4>
+    <h4>Язык:</h4>
     <p>@Model.Language.Name</p>
 </div>
 
 <div>
-    <h4>Duration</h4>
-    <p>@Model.Duration</p>
+    <h4>Продолжительность:</h4>
+    <p>@Model.Duration.TimeOfDay</p>
 </div>
 
 <div>
-    <h4>Actors</h4>
+    <h4>Актеры:</h4>
     <ul>
         @foreach (var actor in Model.Actors)
         {
@@ -63,7 +63,7 @@
 </div>
 
 <div>
-    <h4>Genres</h4>
+    <h4>Жанры:</h4>
     <ul>
         @foreach (var genre in Model.Genres)
         {
@@ -73,7 +73,7 @@
 </div>
 
 <div>
-    <h4>Countries</h4>
+    <h4>Страны:</h4>
     <ul>
         @foreach (var country in Model.Countries)
         {
@@ -83,7 +83,7 @@
 </div>
 
 <div>
-    <h4>Directors</h4>
+    <h4>Режиссеры:</h4>
     <ul>
         @foreach (var director in Model.Directors)
         {
@@ -93,7 +93,7 @@
 </div>
 
 <div>
-    <h4>Companies</h4>
+    <h4>Студии:</h4>
     <ul>
         @foreach (var company in Model.Companies)
         {
@@ -103,7 +103,7 @@
 </div>
 
 <div>
-    <h4>Scriptwriters</h4>
+    <h4>Сценаристы:</h4>
     <ul>
         @foreach (var scriptwriter in Model.Scriptwriters)
         {
@@ -112,4 +112,4 @@
     </ul>
 </div>
 
-<a href="/Film/Films" class="btn btn-secondary">Back</a>
+<a href="/Film/Films" class="btn btn-secondary">Назад</a>

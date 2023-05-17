@@ -1,37 +1,37 @@
 ﻿@model FilmModel
 
-<h1>Add film</h1>
+<h1>Добавить фильм</h1>
 
 <form asp-action="Create">
     <div class="form-group">
-        <label asp-for="Title">Title:</label>
+        <label asp-for="Title">Название:</label>
         <input asp-for="Title" class="form-control" />
         <span asp-validation-for="Title" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="OriginalTitle">Original title:</label>
+        <label asp-for="OriginalTitle">Оригинальное название:</label>
         <input asp-for="OriginalTitle" class="form-control" />
         <span asp-validation-for="OriginalTitle" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="Tagline">Tagline:</label>
+        <label asp-for="Tagline">Слоган:</label>
         <input asp-for="Tagline" class="form-control" />
         <span asp-validation-for="Tagline" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="ReleaseDate" class="control-label">ReleaseDate</label>
+        <label asp-for="ReleaseDate" class="control-label">Дата релиза:</label>
         <input asp-for="ReleaseDate" type="date" class="form-control" />
     </div>
     <div class="form-group">
-        <label asp-for="Rating" class="control-label">Rating</label>
+        <label asp-for="Rating" class="control-label">Рейтинг:</label>
         <input asp-for="Rating" type="number" class="form-control" />
     </div>
     <div class="form-group">
-        <label asp-for="Budget" class="control-label">Budget</label>
+        <label asp-for="Budget" class="control-label">Бюджет:</label>
         <input asp-for="Budget" type="number" class="form-control" />
     </div>
     <div class="form-group">
-        <label asp-for="MpaaRating" class="control-label">MpaaRating</label>
+        <label asp-for="MpaaRating" class="control-label">Рейтинг MPAA:</label>
         <select asp-for="MpaaRating" class="form-control">
             <option value="">-- Select Mpaa Rating --</option>
             @foreach (var rating in ViewBag.MpaaRating)
@@ -41,7 +41,7 @@
         </select>
     </div>
     <div class="form-group">
-        <label asp-for="Language.Name" class="control-label">Language</label>
+        <label asp-for="Language.Name" class="control-label">Язык:</label>
         <select asp-for="Language.Name" class="form-control">
             <option value="">-- Select Language --</option>
             @foreach (var language in ViewBag.Languages)
@@ -51,14 +51,15 @@
         </select>
     </div>
     <div class="form-group">
-        <label asp-for="Description">Description:</label>
+        <label asp-for="Description">Описание:</label>
         <textarea asp-for="Description" class="form-control"></textarea>
         <span asp-validation-for="Description" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="Duration" class="control-label">Duration</label>
+        <label asp-for="Duration" class="control-label">Продолжительность:</label>
         <input asp-for="Duration" type="time" class="form-control" />
     </div>
+    <label>Актеры:</label>
     @for (int i = 0; i < ViewBag.Actors.Count; i++)
     {
         <div>
@@ -66,5 +67,5 @@
             <label>@ViewBag.Actors[i].Name</label>
         </div>
     }
-    <button type="submit" class="btn btn-primary">Save</button>
+    <button type="submit" class="btn btn-primary">Сохранить</button>
 </form>
